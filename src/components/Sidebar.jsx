@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 
 const links = [
-  { to: '/dashboard', label: 'Dashboard', icon: '📊' },
+  { to: '/dashboard', label: 'Dash', icon: '📊' },
   { to: '/customers', label: 'Customers', icon: '👥' },
   { to: '/vehicles', label: 'Vehicles', icon: '🚗' },
   { to: '/services', label: 'Services', icon: '🔧' },
