@@ -85,7 +85,7 @@ export default function Dashboard() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2">📊 Dashboard</h1>
-        <p className="text-slate-300">Welcome back! Here's your garage overview.</p>
+        <p className="text-slate-300">Welcome back! Here's your garage overview</p>
       </div>
 
       {/* Stats Grid */}
@@ -126,7 +126,7 @@ export default function Dashboard() {
             </div>
             <div className="text-white/80 text-sm font-medium">View All</div>
           </div>
-          <div className="text-white/90 text-sm font-medium mb-1">Total Invoicess</div>
+          <div className="text-white/90 text-sm font-medium mb-1">Total Invoices</div>
           <div className="text-4xl font-bold text-white">{counts.invoices}</div>
         </div>
       </div>
