@@ -126,7 +126,7 @@ export default function Dashboard() {
             </div>
             <div className="text-white/80 text-sm font-medium">View All</div>
           </div>
-          <div className="text-white/90 text-sm font-medium mb-1">Total Invoices</div>
+          <div className="text-white/90 text-sm font-medium mb-1">Total Invoicess</div>
           <div className="text-4xl font-bold text-white">{counts.invoices}</div>
         </div>
       </div>
