@@ -78,7 +78,7 @@ export default function Services() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-          <span></span> Services Management
+          Services Management
         </h1>
         <p className="text-slate-300">Manage your service offerings</p>
       </div>

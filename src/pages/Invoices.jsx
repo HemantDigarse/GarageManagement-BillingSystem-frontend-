@@ -209,7 +209,7 @@ export default function Invoices() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-          <span></span> Payment Management
+          Payment Management
         </h1>
         <p className="text-slate-300">Create invoices and process payments in one place</p>
       </div>
@@ -364,7 +364,7 @@ export default function Invoices() {
               type="submit"
               className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-3 rounded-lg font-medium hover:scale-105 active:scale-95 transition-transform shadow-lg"
             >
-              {editing ? '💾 Save Changes' : ' Create Invoice'}
+              {editing ? 'Save Changes' : ' Create Invoice'}
             </button>
             {editing && (
               <button 

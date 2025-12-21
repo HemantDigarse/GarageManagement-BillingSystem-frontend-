@@ -101,7 +101,7 @@ export default function Customers() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-          <span></span> Customers Management
+          Customers Management
         </h1>
         <p className="text-slate-300">Manage your customer database</p>
       </div>
@@ -240,7 +240,7 @@ export default function Customers() {
                       colSpan="5"
                       className="p-8 text-center text-slate-400"
                     >
-                      <div className="text-6xl mb-4">📭</div>
+                      <div className="text-6xl mb-4"></div>
                       <div className="text-xl">
                         {searchTerm ? 'No customers found matching your search' : 'No customers yet'}
                       </div>

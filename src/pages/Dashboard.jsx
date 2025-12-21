@@ -54,7 +54,7 @@ export default function Dashboard() {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
-          <div className="animate-spin text-6xl mb-4">⚙️</div>
+          <div className="animate-spin text-6xl mb-4"></div>
           <div className="text-xl text-white">Loading dashboard...</div>
         </div>
       </div>

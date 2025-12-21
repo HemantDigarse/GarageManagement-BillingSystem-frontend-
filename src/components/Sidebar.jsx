@@ -26,7 +26,7 @@ export default function Sidebar() {
       }`}>
         <div className={`text-lg font-bold mb-1 ${
           theme === 'dark' ? 'text-white' : 'text-gray-900'
-        }`}>📱 Menu</div>
+        }`}>Menu</div>
         <div className={`text-xs ${
           theme === 'dark' ? 'text-slate-400' : 'text-gray-500'
         }`}>Navigate through pages</div>
