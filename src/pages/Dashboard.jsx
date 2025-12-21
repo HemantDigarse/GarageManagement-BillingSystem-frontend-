@@ -81,7 +81,7 @@ export default function Dashboard() {
 
       {/* HEADER */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 p-6 rounded-xl shadow-xl border border-slate-600">
-        <h1 className="text-3xl font-bold text-white mb-2">📊 Dashboard</h1>
+        <h1 className="text-3xl font-bold text-white mb-2"> Dashboard</h1>
         <p className="text-slate-300">
           Welcome back! Here's your garage overview
         </p>
@@ -123,7 +123,7 @@ export default function Dashboard() {
       {/* 📊 CHART */}
       <div className="bg-slate-800/90 p-6 rounded-xl shadow-xl border border-slate-600">
         <h2 className="text-xl font-bold text-white mb-4">
-          📈 System Statistics
+          System Statistics
         </h2>
 
         <div className="h-72">
@@ -145,35 +145,35 @@ export default function Dashboard() {
 
       {/* QUICK ACTIONS */}
       <div className="bg-slate-800/90 p-6 rounded-xl shadow-xl border border-slate-600">
-        <h2 className="text-xl font-bold text-white mb-4">⚡ Quick Actions</h2>
+        <h2 className="text-xl font-bold text-white mb-4">Quick Actions</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <button
             onClick={() => navigate('/customers')}
             className="p-4 bg-indigo-500 text-white rounded-lg"
           >
-            👥 Customers
+            Customers
           </button>
 
           <button
             onClick={() => navigate('/vehicles')}
             className="p-4 bg-green-500 text-white rounded-lg"
           >
-            🚗 Vehicles
+             Vehicles
           </button>
 
           <button
             onClick={() => navigate('/services')}
             className="p-4 bg-orange-500 text-white rounded-lg"
           >
-            🔧 Services
+           Services
           </button>
 
           <button
             onClick={() => navigate('/invoices')}
             className="p-4 bg-pink-500 text-white rounded-lg"
           >
-            💳 Payments
+             Payments
           </button>
         </div>
       </div>
@@ -181,18 +181,18 @@ export default function Dashboard() {
       {/* RECENT ACTIVITY */}
       <div className="bg-slate-800/90 p-6 rounded-xl shadow-xl border border-slate-600">
         <h2 className="text-xl font-bold text-white mb-4">
-          🕒 Recent Activity
+          Recent Activity
         </h2>
 
         <div className="space-y-3">
           <div className="p-4 bg-slate-700 rounded-lg text-white">
-            ✅ New customer registered
+            New customer registered
           </div>
           <div className="p-4 bg-slate-700 rounded-lg text-white">
-            🔧 Service completed
+            Service completed
           </div>
           <div className="p-4 bg-slate-700 rounded-lg text-white">
-            💰 Payment received
+            Payment received
           </div>
         </div>
       </div>

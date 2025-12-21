@@ -65,7 +65,7 @@ export default function Invoices() {
     setSuccess('');
     
     if (!form.customerId || !form.vehicleId || selectedServices.length === 0) {
-      setError('❌ Please select customer, vehicle, and at least one service');
+      setError(' Please select customer, vehicle, and at least one service');
       return;
     }
 
@@ -85,11 +85,11 @@ export default function Invoices() {
       await createInvoice(invoiceData); 
       setForm({ customerId: '', vehicleId: '', status: 'pending' }); 
       setSelectedServices([]);
-      setSuccess('✅ Invoice created successfully!');
+      setSuccess(' Invoice created successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
     }
-    catch { setError('❌ Create failed'); }
+    catch { setError(' Create failed'); }
   };
 
   const startEdit = (invoice) => { 
@@ -119,7 +119,7 @@ export default function Invoices() {
     setSuccess('');
     
     if (!form.customerId || !form.vehicleId || selectedServices.length === 0) {
-      setError('❌ Please select customer, vehicle, and at least one service');
+      setError(' Please select customer, vehicle, and at least one service');
       return;
     }
 
@@ -140,21 +140,21 @@ export default function Invoices() {
       setEditing(null); 
       setForm({ customerId: '', vehicleId: '', status: 'pending' }); 
       setSelectedServices([]);
-      setSuccess('✅ Invoice updated successfully!');
+      setSuccess(' Invoice updated successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
     }
-    catch { setError('❌ Update failed'); }
+    catch { setError(' Update failed'); }
   };
 
   const remove = async (id) => { 
-    if (!window.confirm('🗑️ Are you sure you want to delete this invoice?')) return; 
+    if (!window.confirm(' Are you sure you want to delete this invoice?')) return; 
     try { 
       await deleteInvoice(id); 
-      setSuccess('✅ Invoice deleted successfully!');
+      setSuccess(' Invoice deleted successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
-    } catch { setError('❌ Delete failed'); } 
+    } catch { setError(' Delete failed'); } 
   };
 
   const startPayment = (invoice) => {
@@ -180,11 +180,11 @@ export default function Invoices() {
       await updateInvoice(payingInvoice.id || payingInvoice._id, { status: 'completed' });
       
       setPayingInvoice(null);
-      setSuccess('✅ Payment recorded and invoice marked as completed!');
+      setSuccess(' Payment recorded and invoice marked as completed!');
       await fetch();
       setTimeout(() => setSuccess(''), 3000);
     } catch {
-      setError('❌ Payment failed');
+      setError('Payment failed');
     }
   };
 
@@ -209,7 +209,7 @@ export default function Invoices() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-          <span>💰</span> Payment Management
+          <span></span> Payment Management
         </h1>
         <p className="text-slate-300">Create invoices and process payments in one place</p>
       </div>

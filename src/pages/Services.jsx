@@ -34,11 +34,11 @@ export default function Services() {
     try { 
       await createService(form); 
       setForm({ name: '', description: '', price: '' }); 
-      setSuccess('✅ Service created successfully!');
+      setSuccess(' Service created successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
     }
-    catch { setError('❌ Create failed'); }
+    catch { setError(' Create failed'); }
   };
 
   const startEdit = (s) => { setEditing(s.id); setForm({ name: s.name || '', description: s.description || '', price: s.price || '' }); };
@@ -51,21 +51,21 @@ export default function Services() {
       await updateService(editing, form); 
       setEditing(null); 
       setForm({ name: '', description: '', price: '' }); 
-      setSuccess('✅ Service updated successfully!');
+      setSuccess(' Service updated successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
     }
-    catch { setError('❌ Update failed'); }
+    catch { setError(' Update failed'); }
   };
 
   const remove = async (id) => { 
-    if (!window.confirm('🗑️ Are you sure you want to delete this service?')) return; 
+    if (!window.confirm(' Are you sure you want to delete this service?')) return; 
     try { 
       await deleteService(id); 
-      setSuccess('✅ Service deleted successfully!');
+      setSuccess(' Service deleted successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
-    } catch { setError('❌ Delete failed'); } 
+    } catch { setError(' Delete failed'); } 
   };
 
   const filteredList = list.filter(s =>
@@ -78,7 +78,7 @@ export default function Services() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-          <span>🔧</span> Services Management
+          <span></span> Services Management
         </h1>
         <p className="text-slate-300">Manage your service offerings</p>
       </div>
@@ -98,7 +98,7 @@ export default function Services() {
       {/* Add/Edit Form */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <span>{editing ? '✏️' : '➕'}</span>
+          <span>{editing ? '' : ''}</span>
           {editing ? 'Edit Service' : 'Add New Service'}
         </h2>
         <form onSubmit={editing ? save : create} className="grid gap-4 grid-cols-1 md:grid-cols-6">
@@ -106,7 +106,7 @@ export default function Services() {
             name="name" 
             value={form.name} 
             onChange={change} 
-            placeholder="🔧 Service Name" 
+            placeholder=" Service Name" 
             required
             className="md:col-span-2 p-3 rounded-lg bg-white border-2 border-slate-300 text-black placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium" 
           />
@@ -114,7 +114,7 @@ export default function Services() {
             name="description" 
             value={form.description} 
             onChange={change} 
-            placeholder="📝 Description" 
+            placeholder=" Description" 
             required
             className="md:col-span-2 p-3 rounded-lg bg-white border-2 border-slate-300 text-black placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium" 
           />
@@ -133,7 +133,7 @@ export default function Services() {
               type="submit"
               className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-3 rounded-lg font-medium hover:scale-105 active:scale-95 transition-transform shadow-lg"
             >
-              {editing ? '💾 Save' : '➕ Create'}
+              {editing ? ' Save' : ' Create'}
             </button>
             {editing && (
               <button 
@@ -141,7 +141,7 @@ export default function Services() {
                 onClick={() => { setEditing(null); setForm({ name: '', description: '', price: '' }); }} 
                 className="px-4 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
               >
-                ❌
+                
               </button>
             )}
           </div>
@@ -164,7 +164,7 @@ export default function Services() {
         {loading ? (
           <div className="flex items-center justify-center p-12">
             <div className="text-center">
-              <div className="animate-spin text-6xl mb-4">⚙️</div>
+              <div className="animate-spin text-6xl mb-4"></div>
               <div className="text-xl text-white">Loading services...</div>
             </div>
           </div>
@@ -173,10 +173,10 @@ export default function Services() {
             <table className="min-w-full">
               <thead className="bg-gradient-to-r from-indigo-600 to-purple-600">
                 <tr>
-                  <th className="p-4 text-left text-white font-bold">🔧 Service Name</th>
-                  <th className="p-4 text-left text-white font-bold">📝 Description</th>
-                  <th className="p-4 text-left text-white font-bold">💰 Price</th>
-                  <th className="p-4 text-left text-white font-bold">⚙️ Actions</th>
+                  <th className="p-4 text-left text-white font-bold"> Service Name</th>
+                  <th className="p-4 text-left text-white font-bold"> Description</th>
+                  <th className="p-4 text-left text-white font-bold"> Price</th>
+                  <th className="p-4 text-left text-white font-bold"> Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700">
@@ -191,13 +191,13 @@ export default function Services() {
                           onClick={() => startEdit(s)} 
                           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                         >
-                          ✏️ Edit
+                           Edit
                         </button>
                         <button 
                           onClick={() => remove(s.id || s._id)} 
                           className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                         >
-                          🗑️ Delete
+                           Delete
                         </button>
                       </div>
                     </td>
@@ -206,7 +206,7 @@ export default function Services() {
                 {filteredList.length === 0 && (
                   <tr>
                     <td colSpan="4" className="p-8 text-center text-slate-400">
-                      <div className="text-6xl mb-4">📭</div>
+                      <div className="text-6xl mb-4"></div>
                       <div className="text-xl">
                         {searchTerm ? 'No services found matching your search' : 'No services yet'}
                       </div>
@@ -222,8 +222,8 @@ export default function Services() {
       {/* Stats Footer */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-slate-600">
         <div className="flex items-center justify-between text-slate-300">
-          <span>📊 Total Services: <strong className="text-white">{list.length}</strong></span>
-          <span>🔍 Showing: <strong className="text-white">{filteredList.length}</strong></span>
+          <span> Total Services: <strong className="text-white">{list.length}</strong></span>
+          <span> Showing: <strong className="text-white">{filteredList.length}</strong></span>
         </div>
       </div>
     </div>
