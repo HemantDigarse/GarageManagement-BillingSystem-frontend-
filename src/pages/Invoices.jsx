@@ -249,7 +249,7 @@ export default function Invoices() {
       {/* Add/Edit Form */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <span>{editing ? '✏️' : '➕'}</span>
+          <span>{editing ? '' : ''}</span>
           {editing ? 'Edit Invoice' : 'Create New Invoice'}
         </h2>
         <form onSubmit={editing ? save : create} className="space-y-4">
@@ -262,7 +262,7 @@ export default function Invoices() {
               required
               className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
             >
-              <option value="">👤 Select Customer</option>
+              <option value=""> Select Customer</option>
               {customers.map(c => (
                 <option key={c.id || c._id} value={c.id || c._id}>
                   {c.name}
@@ -278,7 +278,7 @@ export default function Invoices() {
               disabled={!form.customerId}
               className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium disabled:opacity-50"
             >
-              <option value="">🚗 Select Vehicle</option>
+              <option value=""> Select Vehicle</option>
               {filteredVehicles.map(v => (
                 <option key={v.id || v._id} value={v.id || v._id}>
                   {v.plateNumber} - {v.brand} {v.model}
@@ -292,15 +292,15 @@ export default function Invoices() {
               onChange={change} 
               className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
             >
-              <option value="pending">🟡 Pending</option>
-              <option value="completed">🟢 Completed</option>
-              <option value="cancelled">🔴 Cancelled</option>
+              <option value="pending"> Pending</option>
+              <option value="completed"> Completed</option>
+              <option value="cancelled"> Cancelled</option>
             </select>
           </div>
 
           {/* Service Selection */}
           <div className="border-2 border-slate-600 rounded-lg p-4">
-            <h3 className="text-lg font-bold text-white mb-3">🛒 Add Services</h3>
+            <h3 className="text-lg font-bold text-white mb-3"> Add Services</h3>
             <div className="flex gap-2 mb-4">
               <select 
                 id="serviceSelect"
@@ -322,7 +322,7 @@ export default function Invoices() {
                 }}
                 className="px-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:scale-105 active:scale-95 transition-transform shadow-lg"
               >
-                ➕ Add
+                 Add
               </button>
             </div>
 
@@ -341,13 +341,13 @@ export default function Invoices() {
                       onClick={() => removeService(s.id)}
                       className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
                     >
-                      🗑️
+                      
                     </button>
                   </div>
                 ))}
                 <div className="bg-green-500/20 border-2 border-green-500 p-3 rounded-lg mt-3">
                   <div className="text-green-300 font-bold text-lg">
-                    💰 Total: ₹{totalServices.toFixed(2)}
+                     Total: ₹{totalServices.toFixed(2)}
                   </div>
                 </div>
               </div>
@@ -364,7 +364,7 @@ export default function Invoices() {
               type="submit"
               className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-3 rounded-lg font-medium hover:scale-105 active:scale-95 transition-transform shadow-lg"
             >
-              {editing ? '💾 Save Changes' : '➕ Create Invoice'}
+              {editing ? '💾 Save Changes' : ' Create Invoice'}
             </button>
             {editing && (
               <button 
@@ -376,7 +376,7 @@ export default function Invoices() {
                 }} 
                 className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors font-medium"
               >
-                ❌ Cancel
+                 Cancel
               </button>
             )}
           </div>
@@ -389,7 +389,7 @@ export default function Invoices() {
           type="text"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          placeholder="🔍 Search by customer, vehicle, or invoice ID..."
+          placeholder=" Search by customer, vehicle, or invoice ID..."
           className="w-full p-3 rounded-lg bg-white border-2 border-slate-300 text-black placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
         />
       </div>
@@ -399,7 +399,7 @@ export default function Invoices() {
         {loading ? (
           <div className="flex items-center justify-center p-12">
             <div className="text-center">
-              <div className="animate-spin text-6xl mb-4">⚙️</div>
+              <div className="animate-spin text-6xl mb-4"></div>
               <div className="text-xl text-white">Loading invoices...</div>
             </div>
           </div>
@@ -408,13 +408,13 @@ export default function Invoices() {
             <table className="min-w-full">
               <thead className="bg-gradient-to-r from-indigo-600 to-purple-600">
                 <tr>
-                  <th className="p-4 text-left text-white font-bold">📅 Date</th>
-                  <th className="p-4 text-left text-white font-bold">👤 Customer</th>
-                  <th className="p-4 text-left text-white font-bold">🚗 Vehicle</th>
-                  <th className="p-4 text-left text-white font-bold">🔧 Services</th>
-                  <th className="p-4 text-left text-white font-bold">� Amount</th>
-                  <th className="p-4 text-left text-white font-bold">�📊 Status</th>
-                  <th className="p-4 text-left text-white font-bold">⚙️ Actions</th>
+                  <th className="p-4 text-left text-white font-bold"> Date</th>
+                  <th className="p-4 text-left text-white font-bold"> Customer</th>
+                  <th className="p-4 text-left text-white font-bold"> Vehicle</th>
+                  <th className="p-4 text-left text-white font-bold"> Services</th>
+                  <th className="p-4 text-left text-white font-bold"> Amount</th>
+                  <th className="p-4 text-left text-white font-bold"> Status</th>
+                  <th className="p-4 text-left text-white font-bold"> Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700">
@@ -439,9 +439,9 @@ export default function Invoices() {
                           inv.status === 'pending' ? 'bg-yellow-500/20 text-yellow-300' :
                           'bg-red-500/20 text-red-300'
                         }`}>
-                          {inv.status === 'completed' ? '🟢 Paid' : 
-                           inv.status === 'pending' ? '🟡 Unpaid' : 
-                           '🔴 Cancelled'}
+                          {inv.status === 'completed' ? 'Paid' : 
+                           inv.status === 'pending' ? 'Unpaid' : 
+                           'Cancelled'}
                         </span>
                       </td>
                       <td className="p-4">
@@ -451,20 +451,20 @@ export default function Invoices() {
                               onClick={() => startPayment(inv)} 
                               className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                             >
-                              💳 Pay
+                              Pay
                             </button>
                           )}
                           <button 
                             onClick={() => startEdit(inv)} 
                             className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                           >
-                            ✏️ Edit
+                             Edit
                           </button>
                           <button 
                             onClick={() => remove(inv.id || inv._id)} 
                             className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                           >
-                            🗑️
+                            
                           </button>
                         </div>
                       </td>
@@ -474,7 +474,7 @@ export default function Invoices() {
                 {filteredList.length === 0 && (
                   <tr>
                     <td colSpan="7" className="p-8 text-center text-slate-400">
-                      <div className="text-6xl mb-4">📭</div>
+                      <div className="text-6xl mb-4"></div>
                       <div className="text-xl">
                         {searchTerm ? 'No invoices found matching your search' : 'No invoices yet'}
                       </div>
@@ -492,7 +492,7 @@ export default function Invoices() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 backdrop-blur-sm">
           <div className="bg-slate-800 p-8 rounded-xl shadow-2xl border-2 border-purple-500 max-w-md w-full mx-4">
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-              <span>💳</span> Process Payment
+              <span></span> Process Payment
             </h2>
             
             <div className="space-y-4 mb-6">

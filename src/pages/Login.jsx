@@ -40,7 +40,7 @@ export default function Login() {
         {/* Logo and Title */}
         <div className="text-center mb-8">
           <div className="inline-block p-4 bg-white rounded-full shadow-lg mb-4 animate-bounce">
-            <span className="text-6xl">🚗</span>
+            <span className="text-6xl"></span>
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">Garage Management</h1>
           <p className="text-purple-200">Sign in to continue to your dashboard</p>
@@ -48,18 +48,18 @@ export default function Login() {
 
         {/* Login Form */}
         <div className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/20">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Welcome Back! 👋</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Welcome Back!</h2>
           
           {err && (
             <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg flex items-center gap-2">
-              <span className="text-xl">⚠️</span>
+              <span className="text-xl"></span>
               <span>{err}</span>
             </div>
           )}
           
           <form onSubmit={handle} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">📧 Email Address</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
               <input 
                 value={email} 
                 onChange={e => setEmail(e.target.value)} 
@@ -71,7 +71,7 @@ export default function Login() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">🔒 Password</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
               <input 
                 value={password} 
                 onChange={e => setPassword(e.target.value)} 
@@ -89,10 +89,10 @@ export default function Login() {
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <span className="animate-spin">⚙️</span> Signing in...
+                  <span className="animate-spin"></span> Signing in...
                 </span>
               ) : (
-                <span>🚀 Sign In</span>
+                <span>Sign In</span>
               )}
             </button>
           </form>

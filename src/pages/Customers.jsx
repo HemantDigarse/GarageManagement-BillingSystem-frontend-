@@ -41,12 +41,12 @@ export default function Customers() {
     try {
       await createCustomer(form);
       setForm({ name: '', email: '', phone: '' });
-      setSuccess('✅ Customer created successfully!');
+      setSuccess(' Customer created successfully!');
       await fetchList();
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error(err);
-      setError('❌ Create failed');
+      setError(' Create failed');
     }
   };
 
@@ -67,26 +67,26 @@ export default function Customers() {
       await updateCustomer(editing, form);
       setEditing(null);
       setForm({ name: '', email: '', phone: '' });
-      setSuccess('✅ Customer updated successfully!');
+      setSuccess(' Customer updated successfully!');
       await fetchList();
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error(err);
-      setError('❌ Update failed');
+      setError('Update failed');
     }
   };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('🗑️ Are you sure you want to delete this customer?')) return;
+    if (!window.confirm(' Are you sure you want to delete this customer?')) return;
 
     try {
       await deleteCustomer(id);
-      setSuccess('✅ Customer deleted successfully!');
+      setSuccess(' Customer deleted successfully!');
       await fetchList();
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error(err);
-      setError('❌ Delete failed');
+      setError(' Delete failed');
     }
   };
 
@@ -101,7 +101,7 @@ export default function Customers() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-          <span>👥</span> Customers Management
+          <span></span> Customers Management
         </h1>
         <p className="text-slate-300">Manage your customer database</p>
       </div>
@@ -121,7 +121,7 @@ export default function Customers() {
       {/* Add/Edit Form */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <span>{editing ? '✏️' : '➕'}</span>
+          <span>{editing ? '' : ''}</span>
           {editing ? 'Edit Customer' : 'Add New Customer'}
         </h2>
         <form
@@ -132,7 +132,7 @@ export default function Customers() {
             name="name"
             value={form.name}
             onChange={handleChange}
-            placeholder="👤 Full Name"
+            placeholder=" Full Name"
             required
             className="p-3 rounded-lg bg-white border-2 border-slate-300 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
           />
@@ -140,7 +140,7 @@ export default function Customers() {
             name="email"
             value={form.email}
             onChange={handleChange}
-            placeholder="📧 Email Address"
+            placeholder=" Email Address"
             type="email"
             required
             className="p-3 rounded-lg bg-white border-2 border-slate-300 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
@@ -149,7 +149,7 @@ export default function Customers() {
             name="phone"
             value={form.phone}
             onChange={handleChange}
-            placeholder="📱 Phone Number"
+            placeholder=" Phone Number"
             required
             className="p-3 rounded-lg bg-white border-2 border-slate-300 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
           />
@@ -159,7 +159,7 @@ export default function Customers() {
               type="submit"
               className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-3 rounded-lg font-medium hover:scale-105 active:scale-95 transition-transform shadow-lg"
             >
-              {editing ? '💾 Save' : '➕ Create'}
+              {editing ? ' Save' : ' Create'}
             </button>
 
             {editing && (
@@ -171,7 +171,7 @@ export default function Customers() {
                 }}
                 className="px-4 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
               >
-                ❌
+                
               </button>
             )}
           </div>
@@ -184,7 +184,7 @@ export default function Customers() {
           type="text"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          placeholder="🔍 Search customers by name, email, or phone..."
+          placeholder="Search customers by name, email, or phone..."
           className="w-full p-3 rounded-lg bg-white border-2 border-slate-300 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
         />
       </div>
@@ -194,7 +194,7 @@ export default function Customers() {
         {loading ? (
           <div className="flex items-center justify-center p-12">
             <div className="text-center">
-              <div className="animate-spin text-6xl mb-4">⚙️</div>
+              <div className="animate-spin text-6xl mb-4"></div>
               <div className="text-xl text-white">Loading customers...</div>
             </div>
           </div>
@@ -204,10 +204,10 @@ export default function Customers() {
               <thead className="bg-gradient-to-r from-indigo-600 to-purple-600">
                 <tr>
 
-                  <th className="p-4 text-left text-white font-bold">👤 Name</th>
-                  <th className="p-4 text-left text-white font-bold">📧 Email</th>
-                  <th className="p-4 text-left text-white font-bold">📱 Phone</th>
-                  <th className="p-4 text-left text-white font-bold">⚙️ Actions</th>
+                  <th className="p-4 text-left text-white font-bold"> Name</th>
+                  <th className="p-4 text-left text-white font-bold">Email</th>
+                  <th className="p-4 text-left text-white font-bold">Phone</th>
+                  <th className="p-4 text-left text-white font-bold">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700">
@@ -222,13 +222,13 @@ export default function Customers() {
                           onClick={() => startEdit(c)}
                           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                         >
-                          ✏️ Edit
+                         Edit
                         </button>
                         <button
                           onClick={() => handleDelete(c.id || c._id)}
                           className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                         >
-                          🗑️ Delete
+                           Delete
                         </button>
                       </div>
                     </td>
@@ -256,8 +256,8 @@ export default function Customers() {
       {/* Stats Footer */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-slate-600">
         <div className="flex items-center justify-between text-slate-300">
-          <span>📊 Total Customers: <strong className="text-white">{list.length}</strong></span>
-          <span>🔍 Showing: <strong className="text-white">{filteredList.length}</strong></span>
+          <span>Total Customers: <strong className="text-white">{list.length}</strong></span>
+          <span> Showing: <strong className="text-white">{filteredList.length}</strong></span>
         </div>
       </div>
     </div>

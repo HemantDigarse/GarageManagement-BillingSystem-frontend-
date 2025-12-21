@@ -122,7 +122,7 @@ export default function Services() {
             name="price" 
             value={form.price} 
             onChange={change} 
-            placeholder="💰 Price" 
+            placeholder="Price" 
             type="number"
             step="0.01"
             required
@@ -154,7 +154,7 @@ export default function Services() {
           type="text"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          placeholder="🔍 Search services..."
+          placeholder="Search services..."
           className="w-full p-3 rounded-lg bg-white border-2 border-slate-300 text-black placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
         />
       </div>

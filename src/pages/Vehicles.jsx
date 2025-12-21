@@ -64,10 +64,10 @@ export default function Vehicles() {
     try {
       if (editingId) {
         await updateVehicle(editingId, form);
-        setSuccess("✅ Vehicle updated successfully!");
+        setSuccess(" Vehicle updated successfully!");
       } else {
         await createVehicle(form);
-        setSuccess("✅ Vehicle created successfully!");
+        setSuccess(" Vehicle created successfully!");
       }
       setForm({
         plateNumber: "",
@@ -81,7 +81,7 @@ export default function Vehicles() {
       setError("");
       setTimeout(() => setSuccess(""), 3000);
     } catch (err) {
-      setError("❌ Create/Update failed");
+      setError("Create/Update failed");
     }
   };
 
@@ -93,14 +93,14 @@ export default function Vehicles() {
 
   // Delete
   const handleDelete = async (id) => {
-    if (!window.confirm("🗑️ Are you sure you want to delete this vehicle?")) return;
+    if (!window.confirm(" Are you sure you want to delete this vehicle?")) return;
     try {
       await deleteVehicle(id);
-      setSuccess("✅ Vehicle deleted successfully!");
+      setSuccess(" Vehicle deleted successfully!");
       loadVehicles();
       setTimeout(() => setSuccess(""), 3000);
     } catch (err) {
-      setError("❌ Delete failed");
+      setError(" Delete failed");
     }
   };
 
@@ -115,7 +115,7 @@ export default function Vehicles() {
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/90 to-slate-700/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-          <span>🚗</span> Vehicles Management
+          <span></span> Vehicles Management
         </h1>
         <p className="text-slate-300">Manage your vehicle fleet</p>
       </div>
@@ -135,13 +135,13 @@ export default function Vehicles() {
       {/* Add/Edit Form */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <span>{editingId ? '✏️' : '➕'}</span>
+          <span>{editingId ? ' ' : ' '}</span>
           {editingId ? 'Edit Vehicle' : 'Add New Vehicle'}
         </h2>
         <form onSubmit={handleSubmit} className="grid gap-4 grid-cols-1 md:grid-cols-6">
           <input
             name="plateNumber"
-            placeholder="🔢 Plate Number"
+            placeholder=" Plate Number"
             value={form.plateNumber}
             onChange={handleChange}
             required
@@ -149,7 +149,7 @@ export default function Vehicles() {
           />
           <input
             name="brand"
-            placeholder="🏭 Brand"
+            placeholder=" Brand"
             value={form.brand}
             onChange={handleChange}
             required
@@ -157,7 +157,7 @@ export default function Vehicles() {
           />
           <input
             name="model"
-            placeholder="🚙 Model"
+            placeholder=" Model"
             value={form.model}
             onChange={handleChange}
             required
@@ -170,13 +170,13 @@ export default function Vehicles() {
             required
             className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black font-medium focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
           >
-            <option value="">⛽ Select Fuel Type</option>
-            <option value="Petrol">⛽ Petrol</option>
-            <option value="Diesel">🛢️ Diesel</option>
-            <option value="Electric">⚡ Electric</option>
-            <option value="Hybrid">🔋 Hybrid</option>
-            <option value="CNG">💨 CNG</option>
-            <option value="LPG">🔥 LPG</option>
+            <option value=""> Select Fuel Type</option>
+            <option value="Petrol"> Petrol</option>
+            <option value="Diesel"> Diesel</option>
+            <option value="Electric"> Electric</option>
+            <option value="Hybrid"> Hybrid</option>
+            <option value="CNG"> CNG</option>
+            <option value="LPG"> LPG</option>
           </select>
           <select
             name="customerId"
@@ -185,7 +185,7 @@ export default function Vehicles() {
             required
             className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black font-medium focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
           >
-            <option value="">👤 Select Owner</option>
+            <option value="">Select Owner</option>
             {customers.map((customer) => (
               <option key={customer.id || customer._id} value={customer.id || customer._id}>
                 {customer.name}
@@ -198,7 +198,7 @@ export default function Vehicles() {
               type="submit"
               className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-3 rounded-lg font-medium hover:scale-105 active:scale-95 transition-transform shadow-lg"
             >
-              {editingId ? '💾 Save' : '➕ Create'}
+              {editingId ? ' Save' : ' Create'}
             </button>
             {editingId && (
               <button
@@ -209,7 +209,7 @@ export default function Vehicles() {
                 }}
                 className="px-4 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors"
               >
-                ❌
+                
               </button>
             )}
           </div>
@@ -222,7 +222,7 @@ export default function Vehicles() {
           type="text"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          placeholder="🔍 Search vehicles by plate, brand, or model..."
+          placeholder=" Search vehicles by plate, brand, or model..."
           className="w-full p-3 rounded-lg bg-white border-2 border-slate-300 text-black placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
         />
       </div>
@@ -233,19 +233,19 @@ export default function Vehicles() {
           <table className="min-w-full">
             <thead className="bg-gradient-to-r from-indigo-600 to-purple-600">
               <tr>
-                <th className="p-4 text-left text-white font-bold">🔢 Plate No</th>
-                <th className="p-4 text-left text-white font-bold">🏭 Brand</th>
-                <th className="p-4 text-left text-white font-bold">🚙 Model</th>
-                <th className="p-4 text-left text-white font-bold">⛽ Fuel</th>
-                <th className="p-4 text-left text-white font-bold">👤 Owner</th>
-                <th className="p-4 text-left text-white font-bold">⚙️ Actions</th>
+                <th className="p-4 text-left text-white font-bold"> Plate No</th>
+                <th className="p-4 text-left text-white font-bold"> Brand</th>
+                <th className="p-4 text-left text-white font-bold"> Model</th>
+                <th className="p-4 text-left text-white font-bold"> Fuel</th>
+                <th className="p-4 text-left text-white font-bold"> Owner</th>
+                <th className="p-4 text-left text-white font-bold"> Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-700">
               {filteredVehicles.length === 0 ? (
                 <tr>
                   <td colSpan="6" className="p-8 text-center text-slate-400">
-                    <div className="text-6xl mb-4">📦</div>
+                    <div className="text-6xl mb-4"></div>
                     <div className="text-xl">
                       {searchTerm ? 'No vehicles found matching your search' : 'No vehicles yet'}
                     </div>
@@ -267,13 +267,13 @@ export default function Vehicles() {
                           onClick={() => handleEdit(v)}
                           className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                         >
-                          ✏️ Edit
+                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(v.id)}
                           className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                         >
-                          🗑️ Delete
+                           Delete
                         </button>
                       </div>
                     </td>
@@ -289,8 +289,8 @@ export default function Vehicles() {
       {/* Stats Footer */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-slate-600">
         <div className="flex items-center justify-between text-slate-300">
-          <span>📊 Total Vehicles: <strong className="text-white">{vehicles.length}</strong></span>
-          <span>🔍 Showing: <strong className="text-white">{filteredVehicles.length}</strong></span>
+          <span> Total Vehicles: <strong className="text-white">{vehicles.length}</strong></span>
+          <span> Showing: <strong className="text-white">{filteredVehicles.length}</strong></span>
         </div>
       </div>
     </div>

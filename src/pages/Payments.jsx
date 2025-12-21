@@ -57,7 +57,7 @@ export default function Payments() {
     setSuccess('');
     
     if (!form.invoiceId || !form.method) {
-      setError('❌ Please select invoice and payment method');
+      setError('Please select invoice and payment method');
       return;
     }
 
@@ -76,11 +76,11 @@ export default function Payments() {
       await updateInvoice(form.invoiceId, { status: 'completed' });
       
       setForm({ invoiceId: '', amount: 0, method: 'cash' }); 
-      setSuccess('✅ Payment recorded and invoice marked as completed!');
+      setSuccess(' Payment recorded and invoice marked as completed!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
     }
-    catch { setError('❌ Payment failed'); }
+    catch { setError('Payment failed'); }
   };
 
   const startEdit = (p) => { setEditing(p.id); setForm({ invoiceId: p.invoiceId || '', amount: p.amount || 0, method: p.method || 'cash' }); };
@@ -100,21 +100,21 @@ export default function Payments() {
       await updatePayment(editing, paymentData); 
       setEditing(null); 
       setForm({ invoiceId: '', amount: 0, method: 'cash' }); 
-      setSuccess('✅ Payment updated successfully!');
+      setSuccess('Payment updated successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
     }
-    catch { setError('❌ Update failed'); }
+    catch { setError('Update failed'); }
   };
 
   const remove = async (id) => { 
-    if (!window.confirm('🗑️ Are you sure you want to delete this payment?')) return; 
+    if (!window.confirm('Are you sure you want to delete this payment?')) return; 
     try { 
       await deletePayment(id); 
-      setSuccess('✅ Payment deleted successfully!');
+      setSuccess('ayment deleted successfully!');
       await fetch(); 
       setTimeout(() => setSuccess(''), 3000);
-    } catch { setError('❌ Delete failed'); } 
+    } catch { setError('Delete failed'); } 
   };
 
   const filteredList = list.filter(p => {
@@ -175,7 +175,7 @@ export default function Payments() {
       {/* Unpaid Invoices Section */}
       {unpaidInvoices.length > 0 && !editing && (
         <div className="bg-yellow-500/10 border-2 border-yellow-500 rounded-xl p-4">
-          <h3 className="text-lg font-bold text-yellow-300 mb-3">⚠️ Unpaid Invoices ({unpaidInvoices.length})</h3>
+          <h3 className="text-lg font-bold text-yellow-300 mb-3"> Unpaid Invoices ({unpaidInvoices.length})</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {unpaidInvoices.slice(0, 6).map(inv => {
               const customer = customers.find(c => (c.id || c._id) == inv.customerId);
@@ -183,15 +183,15 @@ export default function Payments() {
               return (
                 <div key={inv.id || inv._id} className="bg-slate-800/90 p-3 rounded-lg border border-slate-600">
                   <div className="text-yellow-400 font-bold text-sm mb-1">Invoice #{inv.invoiceId || inv.id || inv._id}</div>
-                  <div className="text-slate-300 text-xs mb-1">👤 {customer?.name || inv.customerId}</div>
-                  <div className="text-slate-300 text-xs mb-2">🚗 {vehicle?.plateNumber || inv.vehicleId}</div>
+                  <div className="text-slate-300 text-xs mb-1"> {customer?.name || inv.customerId}</div>
+                  <div className="text-slate-300 text-xs mb-2"> {vehicle?.plateNumber || inv.vehicleId}</div>
                   <div className="text-green-300 font-bold mb-2">₹{Number(inv.totalAmount || 0).toFixed(2)}</div>
                   <button
                     type="button"
                     onClick={() => setForm({ invoiceId: inv.id || inv._id, amount: inv.totalAmount || 0, method: 'cash' })}
                     className="w-full px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded text-sm font-medium hover:scale-105 transition-transform"
                   >
-                    💳 Pay Now
+                    Pay Now
                   </button>
                 </div>
               );
@@ -203,7 +203,7 @@ export default function Payments() {
       {/* Add/Edit Form */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-6 rounded-xl shadow-xl border border-slate-600">
         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-          <span>{editing ? '✏️' : '💳'}</span>
+          <span>{editing ? '' : ''}</span>
           {editing ? 'Edit Payment' : 'Record Payment'}
         </h2>
         <form onSubmit={editing ? save : create} className="space-y-4">
@@ -215,7 +215,7 @@ export default function Payments() {
               required
               className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
             >
-              <option value="">📋 Select Invoice</option>
+              <option value="">Select Invoice</option>
               {unpaidInvoices.map(inv => {
                 const customer = customers.find(c => (c.id || c._id) == inv.customerId);
                 return (
@@ -232,7 +232,7 @@ export default function Payments() {
               onChange={change} 
               type="number" 
               step="0.01"
-              placeholder="💵 Amount" 
+              placeholder="Amount" 
               required
               className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium" 
             />
@@ -244,20 +244,20 @@ export default function Payments() {
               required
               className="p-3 rounded-lg bg-white border-2 border-slate-300 text-black focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
             >
-              <option value="cash">💵 Cash</option>
-              <option value="card">💳 Card</option>
-              <option value="bank">🏦 Bank Transfer</option>
-              <option value="upi">📱 UPI</option>
+              <option value="cash">Cash</option>
+              <option value="card">Card</option>
+              <option value="bank">Bank Transfer</option>
+              <option value="upi">UPI</option>
             </select>
           </div>
 
           {form.invoiceId && (
             <div className="bg-green-500/20 border-2 border-green-500 p-4 rounded-lg">
               <div className="text-green-300 font-bold text-lg">
-                💰 Payment Amount: ₹{Number(form.amount).toFixed(2)}
+                 Payment Amount: ₹{Number(form.amount).toFixed(2)}
               </div>
               <div className="text-slate-300 text-sm mt-1">
-                ℹ️ This payment will mark Invoice #{form.invoiceId} as COMPLETED
+                This payment will mark Invoice #{form.invoiceId} as COMPLETED
               </div>
             </div>
           )}
@@ -267,7 +267,7 @@ export default function Payments() {
               type="submit"
               className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-3 rounded-lg font-medium hover:scale-105 active:scale-95 transition-transform shadow-lg"
             >
-              {editing ? '💾 Save Payment' : '💳 Record Payment & Mark Invoice Completed'}
+              {editing ? ' Save Payment' : ' Record Payment & Mark Invoice Completed'}
             </button>
             {editing && (
               <button 
@@ -275,7 +275,7 @@ export default function Payments() {
                 onClick={() => { setEditing(null); setForm({ invoiceId: '', amount: 0, method: 'cash' }); }} 
                 className="px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-500 transition-colors font-medium"
               >
-                ❌
+                
               </button>
             )}
           </div>
@@ -288,7 +288,7 @@ export default function Payments() {
           type="text"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          placeholder="🔍 Search by invoice ID or payment method..."
+          placeholder=" Search by invoice ID or payment method..."
           className="w-full p-3 rounded-lg bg-white border-2 border-slate-300 text-black placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none font-medium"
         />
       </div>
@@ -298,7 +298,7 @@ export default function Payments() {
         {loading ? (
           <div className="flex items-center justify-center p-12">
             <div className="text-center">
-              <div className="animate-spin text-6xl mb-4">⚙️</div>
+              <div className="animate-spin text-6xl mb-4"></div>
               <div className="text-xl text-white">Loading payments...</div>
             </div>
           </div>
@@ -307,12 +307,12 @@ export default function Payments() {
             <table className="min-w-full">
               <thead className="bg-gradient-to-r from-indigo-600 to-purple-600">
                 <tr>
-                  <th className="p-4 text-left text-white font-bold">📋 Invoice</th>
-                  <th className="p-4 text-left text-white font-bold">� Customer</th>
-                  <th className="p-4 text-left text-white font-bold">💵 Amount</th>
-                  <th className="p-4 text-left text-white font-bold">💳 Method</th>
-                  <th className="p-4 text-left text-white font-bold">📅 Date</th>
-                  <th className="p-4 text-left text-white font-bold">⚙️ Actions</th>
+                  <th className="p-4 text-left text-white font-bold"> Invoice</th>
+                  <th className="p-4 text-left text-white font-bold"> Customer</th>
+                  <th className="p-4 text-left text-white font-bold"> Amount</th>
+                  <th className="p-4 text-left text-white font-bold"> Method</th>
+                  <th className="p-4 text-left text-white font-bold"> Date</th>
+                  <th className="p-4 text-left text-white font-bold"> Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-700">
@@ -332,10 +332,10 @@ export default function Payments() {
                           p.method?.toLowerCase() === 'upi' ? 'bg-orange-500/20 text-orange-300' :
                           'bg-gray-500/20 text-gray-300'
                         }`}>
-                          {p.method?.toLowerCase() === 'cash' ? '💵 Cash' :
-                           p.method?.toLowerCase() === 'card' ? '💳 Card' :
-                           p.method?.toLowerCase() === 'bank' ? '🏦 Bank' :
-                           p.method?.toLowerCase() === 'upi' ? '📱 UPI' :
+                          {p.method?.toLowerCase() === 'cash' ? 'Cash' :
+                           p.method?.toLowerCase() === 'card' ? 'Card' :
+                           p.method?.toLowerCase() === 'bank' ? 'Bank' :
+                           p.method?.toLowerCase() === 'upi' ? 'UPI' :
                            p.method}
                         </span>
                       </td>
@@ -346,13 +346,13 @@ export default function Payments() {
                             onClick={() => startEdit(p)} 
                             className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                           >
-                            ✏️ Edit
+                             Edit
                           </button>
                           <button 
                             onClick={() => remove(p.id || p._id)} 
                             className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 hover:scale-105 active:scale-95 transition-all shadow-md font-medium"
                           >
-                            🗑️ Delete
+                             Delete
                           </button>
                         </div>
                       </td>
@@ -362,7 +362,7 @@ export default function Payments() {
                 {filteredList.length === 0 && (
                   <tr>
                     <td colSpan="6" className="p-8 text-center text-slate-400">
-                      <div className="text-6xl mb-4">📭</div>
+                      <div className="text-6xl mb-4"></div>
                       <div className="text-xl">
                         {searchTerm ? 'No payments found matching your search' : 'No payments yet'}
                       </div>
@@ -378,8 +378,8 @@ export default function Payments() {
       {/* Stats Footer */}
       <div className="bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-slate-600">
         <div className="flex items-center justify-between text-slate-300">
-          <span>📊 Total Payments: <strong className="text-white">{list.length}</strong></span>
-          <span>🔍 Showing: <strong className="text-white">{filteredList.length}</strong></span>
+          <span> Total Payments: <strong className="text-white">{list.length}</strong></span>
+          <span> Showing: <strong className="text-white">{filteredList.length}</strong></span>
         </div>
       </div>
     </div>

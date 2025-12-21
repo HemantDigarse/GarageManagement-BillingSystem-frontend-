@@ -64,7 +64,7 @@ export default function Dashboard() {
     return (
       <div className="p-6 bg-red-500/20 border border-red-500 rounded-lg">
         <div className="text-red-200 flex items-center gap-2">
-          <span className="text-2xl">⚠️</span>
+          <span className="text-2xl"></span>
           <span>{error}</span>
         </div>
       </div>
